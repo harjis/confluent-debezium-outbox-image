@@ -1,5 +1,6 @@
 create database posts;
 \c posts;
+create extension "uuid-ossp";
 create table outbox
 (
     id            uuid         not null
@@ -13,9 +14,8 @@ create table outbox
 );
 
 INSERT INTO outbox(id, aggregatetype, aggregateid, type, timestamp, payload)
-VALUES ('579e5184-23c9-43de-8ec3-8c42b26acd7c', 'Post', 1,
-        'PostCreated', now(), '{
-    "Id": 1,
-    "Title": "a",
-    "Content": "a"
-  }');
+VALUES (uuid_generate_v4(), 'Post', 1, 'PostCreated', now(), '{
+  "Id": 1,
+  "Title": "a",
+  "Content": "a"
+}');
