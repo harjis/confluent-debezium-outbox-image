@@ -6,6 +6,6 @@ SELECT uuid_generate_v4(),
        MAX(aggregateid::INTEGER) + 1 as max,
        'PostCreated',
        now(),
-       to_jsonb(CONCAT('{"Id": ', MAX(aggregateid::INTEGER) + 1, ',"Title": "a","Content": "a"}')::text)
+       CONCAT('{"Id": ', MAX(aggregateid::INTEGER) + 1, ',"Title": "a","Content": "a"}')::json
 FROM outbox;
 
