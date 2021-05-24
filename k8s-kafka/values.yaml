@@ -1,0 +1,64 @@
+## ------------------------------------------------------
+## Zookeeper
+## ------------------------------------------------------
+cp-zookeeper:
+  enabled: true
+  servers: 1
+  image: confluentinc/cp-zookeeper
+  imageTag: 6.1.0
+  persistence:
+    enabled: true
+    dataDirSize: 1Gi
+    dataLogDirSize: 1Gi
+
+## ------------------------------------------------------
+## Kafka
+## ------------------------------------------------------
+cp-kafka:
+  enabled: true
+  brokers: 3
+  image: confluentinc/cp-enterprise-kafka
+  imageTag: 6.1.0
+  persistence:
+    enabled: true
+    size: 1Gi
+    disksPerBroker: 1
+
+## ------------------------------------------------------
+## Kafka Connect
+## ------------------------------------------------------
+cp-kafka-connect:
+  enabled: true
+  image: d0rka/confluent-debezium-outbox-image
+  imageTag: latest
+  customEnv:
+    DB_HOST: postgres-cis
+    DB_PORT: 5432
+    DB_USERNAME: postgres
+    DB_PASSWORD: postgres
+    DB_NAME: posts
+    DB_SERVERNAME: posts
+
+## ------------------------------------------------------
+## Schema Registry
+## ------------------------------------------------------
+cp-schema-registry:
+  enabled: false
+
+## ------------------------------------------------------
+## REST Proxy
+## ------------------------------------------------------
+cp-kafka-rest:
+  enabled: false
+
+## ------------------------------------------------------
+## KSQL Server
+## ------------------------------------------------------
+cp-ksql-server:
+  enabled: false
+
+## ------------------------------------------------------
+## Control Center
+## ------------------------------------------------------
+cp-control-center:
+  enabled: false
