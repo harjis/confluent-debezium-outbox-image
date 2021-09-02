@@ -6,6 +6,9 @@ cp-zookeeper:
   servers: 1
   image: confluentinc/cp-zookeeper
   imageTag: 6.1.0
+  prometheus:
+    jmx:
+      enabled: false
   persistence:
     enabled: true
     dataDirSize: 1Gi
@@ -19,6 +22,9 @@ cp-kafka:
   brokers: 3
   image: confluentinc/cp-enterprise-kafka
   imageTag: 6.1.0
+  prometheus:
+    jmx:
+      enabled: false
   persistence:
     enabled: true
     size: 1Gi
@@ -31,6 +37,9 @@ cp-kafka-connect:
   enabled: true
   image: d0rka/confluent-debezium-outbox-image
   imageTag: latest
+  prometheus:
+    jmx:
+      enabled: false
   configurationOverrides:
     key.converter.schemas.enable: false
     key.converter: org.apache.kafka.connect.json.JsonConverter
