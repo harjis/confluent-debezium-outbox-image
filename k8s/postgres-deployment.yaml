@@ -13,25 +13,26 @@ spec:
         component: postgres
     spec:
       volumes:
-        -
-          name: postgres-storage
+        - name: postgres-storage
           persistentVolumeClaim:
             claimName: con-deb-db-pvc
+        - name: initialize-db-volume
+          configMap:
+            name: initialize-db-config
       containers:
-        -
-          name: postgres
+        - name: postgres
           image: debezium/postgres:12
           ports:
-            -
-              containerPort: 5432
+            - containerPort: 5432
           volumeMounts:
-            -
-              name: postgres-storage
+            - name: postgres-storage
               mountPath: /var/lib/postgresql/data
               subPath: postgres
+            - name: initialize-db-volume
+              mountPath: /docker-entrypoint-initdb.d/initialize.sql
+              subPath: initialize.sql
           env:
-            -
-              name: POSTGRES_PASSWORD
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: pgpassword
@@ -46,6 +47,5 @@ spec:
   selector:
     component: postgres
   ports:
-    -
-      port: 5432
+    - port: 5432
       targetPort: 5432

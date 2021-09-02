@@ -36,7 +36,7 @@ cp-kafka:
 cp-kafka-connect:
   enabled: true
   image: d0rka/confluent-debezium-outbox-image
-  imageTag: latest
+  imageTag: 0.1.1
   prometheus:
     jmx:
       enabled: false
