@@ -1,3 +1,5 @@
+This project is build based on rmoff blog post: https://rmoff.net/2018/12/15/docker-tips-and-tricks-with-kafka-connect-ksqldb-and-kafka/
+
 # How to use
 
 ## k8s
