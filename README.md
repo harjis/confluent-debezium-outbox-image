@@ -33,3 +33,22 @@ skaffold dev
 ./kafka-k8s-scripts/uninstall.sh
 ./kafka-k8s-scripts/clear-kafka-data.sh
 ```
+
+## docker-compose
+
+1. Bring cluster up
+```shell
+docker-compose up --build
+```
+
+2. Start consuming a topic
+```shell
+./kafka-scripts/print_posts_topic_from_beginning.sh
+```
+
+3. Insert new data in db in other shell
+```shell
+./db-scripts/insert_post.sh
+```
+
+4. Consumer should receive the new item in first shell
