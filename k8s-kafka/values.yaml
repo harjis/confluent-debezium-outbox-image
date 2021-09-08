@@ -42,9 +42,9 @@ cp-kafka-connect:
       enabled: false
   configurationOverrides:
     key.converter.schemas.enable: false
-    key.converter: org.apache.kafka.connect.json.JsonConverter
+    key.converter: org.apache.kafka.connect.storage.StringConverter
     value.converter.schemas.enable: false
-    value.converter: org.apache.kafka.connect.json.JsonConverter
+    value.converter: org.apache.kafka.connect.storage.StringConverter
   customEnv:
     CONNECT_REST_PORT: 8083
     CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE: false

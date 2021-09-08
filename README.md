@@ -15,3 +15,21 @@ skaffold dev
 ```shell
 ./kafka-k8s-scripts/install.sh
 ```
+
+3. Start consuming a topic
+```shell
+./kafka-k8s-scripts/print_posts_topic_from_beginning.sh
+```
+
+4. Insert new data in db in other shell
+```shell
+./db-k8s-scripts/insert_post.sh
+```
+
+5. Consumer should receive the new item in first shell
+
+6. Close skaffold and uninstall kafka
+```shell
+./kafka-k8s-scripts/uninstall.sh
+./kafka-k8s-scripts/clear-kafka-data.sh
+```
