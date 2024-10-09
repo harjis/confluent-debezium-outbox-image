@@ -21,7 +21,7 @@ curl -s \
      "tombstones.on.delete": "false",
      "transforms": "outbox",
      "transforms.outbox.type": "io.debezium.transforms.outbox.EventRouter",
-     "transforms.outbox.route.topic.replacement": "${routedByValue}.events",
+     "transforms.outbox.route.topic.replacement": "outbox",
      "transforms.outbox.table.fields.additional.placement": "type:header:eventType"
    }
  }'
